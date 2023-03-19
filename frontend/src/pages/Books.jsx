@@ -13,6 +13,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Update from './Update'
+import Grid from '@mui/material/Grid';
+
 
 const Books = () => {
     const [books, setBooks] = useState([])
@@ -46,11 +48,13 @@ const Books = () => {
             </div>
             <div className='books'>
                 <Container>
-                    {
+                    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
+                    {   
                         books.map(book => (
+                            <Grid item xs={12} sm={4} md={4} key={book.id}>
                             <Card sx={{ marginBottom: 5 }}>
                                 <CardMedia
-                                    sx={{ height: 250 }}
+                                    sx={{ height: 300 }}
                                     image={book.cover}
                                 />
                                 <CardContent>
@@ -79,8 +83,10 @@ const Books = () => {
                                     </div>
                                 </CardActions>
                             </Card>
+                            </Grid>
                         ))
                     }
+                    </Grid>
                 </Container>
             </div>
             <Add />
